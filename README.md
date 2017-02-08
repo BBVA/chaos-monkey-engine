@@ -8,5 +8,5 @@ The **Chaos Monkey Engine** (CME) is a tool to orchestrate attacks to your cloud
 
 The CME is completely API-driven, so that it can be easily integrated with external and third-party systems.
 
-To try a quickstart or read more, please refer to the [documentation](http://chaos-monkey-engine.readthedocs.io/).
+To try a [quickstart](http://chaos-monkey-engine.readthedocs.io/quickstart.html#quickstart) or read more, please refer to the [documentation](http://chaos-monkey-engine.readthedocs.io/).
 
