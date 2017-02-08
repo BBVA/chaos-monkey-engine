@@ -1,6 +1,6 @@
 # Chaos Monkey Engine
 
-[![docs status](https://readthedocs.org/projects/chaos-monkey-engine/badge/)](http://chaos-monkey-engine.readthedocs.io)
+[![docs status](https://readthedocs.org/projects/chaos-monkey-engine/badge/?version=latest)](http://chaos-monkey-engine.readthedocs.io)
 
 The **Chaos Monkey Engine** (CME) is a tool to orchestrate attacks to your cloud infrastructure in order to implement the principles of [Chaos Engineering](http://principlesofchaos.org). It is inspired in the Netflix's [SimianArmy](https://github.com/Netflix/SimianArmy) but built with these principles in mind:
 
