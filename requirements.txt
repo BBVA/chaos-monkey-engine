@@ -1,0 +1,29 @@
+# Application requirements
+apscheduler
+click
+apache-libcloud
+paramiko
+requests
+arrow
+flask
+flask-cors
+flask_sqlalchemy
+gevent
+slacker
+SQLAlchemy
+jsonschema
+git+git://github.com/alejandrogr/Flask-HAL.git#egg=flask-hal
+
+# Testing, auditing and linting requirements
+pytest
+pytest-flask
+pytest-cov
+behave
+bandit
+pylint
+
+# Documentation
+sphinx
+sphinx-autobuild
+sphinx_rtd_theme
+sphinxcontrib-httpdomain
