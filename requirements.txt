@@ -12,7 +12,7 @@ gevent
 slacker
 SQLAlchemy
 jsonschema
-git+git://github.com/alejandrogr/Flask-HAL.git#egg=flask-hal
+git+git://github.com/BBVA/Flask-HAL.git#egg=flask-hal
 
 # Testing, auditing and linting requirements
 pytest
