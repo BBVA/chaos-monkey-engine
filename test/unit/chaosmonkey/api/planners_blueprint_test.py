@@ -1,6 +1,5 @@
-from unittest.mock import patch
-from flask import url_for, current_app
-from chaosmonkey.api.hal import HalDocument
+from flask import url_for
+from flask_hal import Document
 import test.planners.planner1 as planner1_module
 import test.planners.planner2 as planner2_module
 
@@ -15,7 +14,7 @@ def test_empty_planners_store_return_hal(app, manager):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(data={"planners": []}).to_dict()
+        assert res.json == Document(data={"planners": []}).to_dict()
 
 
 def test_planners_list_return_hal(app, manager):
@@ -31,4 +30,4 @@ def test_planners_list_return_hal(app, manager):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(data={"planners": planner_list}).to_dict()
+        assert res.json == Document(data={"planners": planner_list}).to_dict()

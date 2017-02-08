@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from flask import url_for, json
-from chaosmonkey.api.hal import HalDocument
+from flask_hal import Document
 import test.attacks.attack1 as attack1_module
 import test.planners.planner1 as planner1_module
 
@@ -24,7 +24,7 @@ def test_empty_plans_return_hal(app):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(data={"plans": []}).to_dict()
+        assert res.json == Document(data={"plans": []}).to_dict()
 
 
 def test_plan_list_return_hal(app, manager):
@@ -39,7 +39,7 @@ def test_plan_list_return_hal(app, manager):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(data={"plans": plan_list}).to_dict()
+        assert res.json == Document(data={"plans": plan_list}).to_dict()
 
 
 def test_plan_get_return_hal_with_executors(app, manager):
@@ -52,7 +52,7 @@ def test_plan_get_return_hal_with_executors(app, manager):
     with app.test_request_context(url):
         res = app.test_client().get(url)
 
-        expected = HalDocument(data=plan.to_dict(), embedded={"executors": [executor.to_dict()]}).to_dict()
+        expected = Document(data=plan.to_dict(), embedded={"executors": [executor.to_dict()]}).to_dict()
 
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"

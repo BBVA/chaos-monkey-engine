@@ -4,9 +4,9 @@ API Tests
 import arrow
 from apscheduler.triggers.date import DateTrigger
 from flask import url_for
+from flask_hal import Document
 from datetime import datetime, timedelta
 
-from chaosmonkey.api.hal import HalDocument
 from chaosmonkey.api.executors_blueprint import trigger_to_dict, dict_to_trigger
 
 
@@ -18,27 +18,27 @@ def test_executors_list_return_empty_array(app):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(embedded={"executors": []}).to_dict()
+        assert res.json == Document(embedded={"executors": []}).to_dict()
 
 
-def test_get_executors(app, manager):
+def test_get_executors(app, manager, plan):
     """" Test that the endpoint returns an array of executors """
     url = url_for("executors.get_executors")
 
     run_time = datetime.now() + timedelta(hours=10)
-    executor = manager.add_executor(run_time, "executor name", {}, "plan_id")
+    executor = manager.add_executor(run_time, "executor name", {}, plan.id)
 
     with app.test_request_context(url):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(embedded={"executors": [executor.to_dict()]}).to_dict()
+        assert res.json == Document(embedded={"executors": [executor.to_dict()]}).to_dict()
 
 
-def test_put_executor_valid_body(app, manager):
+def test_put_executor_valid_body(app, manager, plan):
     # Add a executor to the datastore
     run_time = datetime.now() + timedelta(hours=10)
-    executor = manager.add_executor(run_time, "executor name", {}, "plan_id")
+    executor = manager.add_executor(run_time, "executor name", {}, plan.id)
 
     # Make the request
     url = url_for("executors.put_executor", executor_id=executor.id)
@@ -125,10 +125,10 @@ def test_put_executor_valid_body_invalid_executorid(app):
     assert res.json == {"msg": "executor not found invalid"}
 
 
-def test_delete_executor(app, manager):
+def test_delete_executor(app, manager, plan):
     # Add a executor to the datastore
     run_time = datetime.now() + timedelta(hours=10)
-    executor = manager.add_executor(run_time, "executor name", {}, "plan_id")
+    executor = manager.add_executor(run_time, "executor name", {}, plan.id)
     url = url_for("executors.delete_executor", executor_id=executor.id)
     with app.test_request_context(url):
         res = app.test_client().delete(url)

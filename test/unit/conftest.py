@@ -33,6 +33,13 @@ def tear_down():
     shutdown_engine()
 
 
-@pytest.fixture()
+@pytest.fixture
 def manager():
     return cme_manager
+
+
+@pytest.fixture
+def plan(manager):
+    plan = manager.add_plan("plan name")
+    yield plan
+    manager.delete_plan(plan.id)

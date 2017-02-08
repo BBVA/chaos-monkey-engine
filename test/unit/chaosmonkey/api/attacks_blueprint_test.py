@@ -1,5 +1,5 @@
 from flask import url_for
-from chaosmonkey.api.hal import HalDocument
+from flask_hal import Document
 import test.attacks.attack1 as attack1_module
 import test.attacks.attack2 as attack2_module
 
@@ -14,7 +14,7 @@ def test_empty_attack_store_return_hal(app, manager):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(data={"attacks": attack_list}).to_dict()
+        assert res.json == Document(data={"attacks": attack_list}).to_dict()
 
 
 def test_attack_list_return_hal(app, manager):
@@ -30,4 +30,4 @@ def test_attack_list_return_hal(app, manager):
         res = app.test_client().get(url)
         assert res.status_code == 200
         assert res.mimetype == "application/hal+json"
-        assert res.json == HalDocument(data={"attacks": attack_list}).to_dict()
+        assert res.json == Document(data={"attacks": attack_list}).to_dict()
