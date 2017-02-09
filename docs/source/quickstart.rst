@@ -29,8 +29,8 @@ Get your engine up and running
 
 Build and run the Docker container::
 
-    docker build -t cm .
-    docker run --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -ti cm
+    docker build -t chaos-monkey-engine .
+    docker run --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -ti chaos-monkey-engine
 
 The Chaos Monkey Engine should be now listening in port 5000 TCP and ready to attack the machines in your AWS infrastructure.
 

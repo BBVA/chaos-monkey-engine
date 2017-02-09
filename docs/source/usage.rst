@@ -3,9 +3,9 @@
 Usage
 =====
 
-Running ``cm --help`` shows the usage information::
+Running ``chaos-monkey-engine --help`` shows the usage information::
 
-  Usage: cm [OPTIONS]
+  Usage: chaos-monkey-engine [OPTIONS]
 
     Chaos Monkey Engine command line utility
 
@@ -28,5 +28,5 @@ The Docker container has a default ``CMD`` directive that sets these sane defaul
 
 For example, to launch the server on port 5000 TCP as a foreground process, passing AWS credentials::
 
-  docker run --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -ti cm
+  docker run --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION -ti chaos-monkey-engine
 
