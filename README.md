@@ -14,3 +14,18 @@ To try a [quickstart](http://chaos-monkey-engine.readthedocs.io/quickstart.html#
 
 You can also find the last docker image build in the [dockerhub](https://hub.docker.com/r/bbvalabs/chaos-monkey-engine/).
 
+# TODO:
+
+- **Improve testing quality & coverage**
+- **Executors and Plans tracking** Right now we are only tracking if the plan or executor has been executed or not.
+    We need to track the state (executed, failed, pending...), possible logs and results.
+- **Load planners & attacks dynamically from API** Planners and Attacks are dynamically loaded from the modules directories.
+    We need endpoints to upload attacks and planners modules to the modules directories. 
+- **Historic of executions** Keep and historic and provide a way to query it.
+
+# Contributing to Chaos Monkey Engine
+
+You can contribute to Chaos Monkey Engine in a few different ways:
+
+- Submit issues through [issue tracker](https://github.com/BBVA/chaos-monkey-engine/issues) on GitHub.
+- If you wish to make code changes, or contribute something new, please follow the [GitHub Forks / Pull requests model](https://help.github.com/articles/fork-a-repo/): Fork the chaos-monkey-engine repo, make the change and propose it back by submitting a pull request.
