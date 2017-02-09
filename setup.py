@@ -8,6 +8,6 @@ setup(name='chaosmonkey',
       include_package_data=True,
       entry_points='''
         [console_scripts]
-        cm=chaosmonkey.cm:cm
+        chaos-monkey-engine=chaosmonkey.cm:cm
         ''',
      )

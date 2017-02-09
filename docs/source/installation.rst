@@ -8,11 +8,11 @@ Docker container
 
 Build the container with Docker 1.12+::
 
-    docker build -t cm .
+    docker build -t chaos-monkey-engine .
 
-Then, you can run the container as the ``cm`` command. E.g::
+Then, you can run the container as the ``chaos-monkey-engine`` command. E.g::
 
-    docker run --rm cm --help
+    docker run --rm chaos-monkey-engine --help
 
 Python package
 **************
@@ -27,7 +27,7 @@ Install the engine::
 
     pip install .
 
-Now you have the ``cm`` command on your path::
+Now you have the ``chaos-monkey-engine`` command on your path::
 
-    cm --help
+    chaos-monkey-engine --help
 
