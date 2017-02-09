@@ -1,29 +1,28 @@
 # Application requirements
-apscheduler
-click
-apache-libcloud
-paramiko
-requests
-arrow
-flask
-flask-cors
-flask_sqlalchemy
-gevent
-slacker
-SQLAlchemy
-jsonschema
-git+git://github.com/BBVA/Flask-HAL.git#egg=flask-hal
+apscheduler==3.3.1
+click==6.7
+apache-libcloud==1.5.0
+paramiko==2.1.1
+requests==2.13.0
+arrow==0.10.0
+flask==0.12
+flask-cors==3.0.2
+flask_sqlalchemy==2.1
+gevent==1.2.1
+SQLAlchemy==1.1.5
+jsonschema==2.6.0
+git+git://github.com/BBVA/Flask-HAL.git#egg=flask-hal==1.0.4
 
 # Testing, auditing and linting requirements
-pytest
-pytest-flask
-pytest-cov
-behave
-bandit
-pylint
+pytest==3.0.6
+pytest-flask==0.10.0
+pytest-cov==2.4.0
+behave==1.2.5
+bandit==1.4.0
+pylint==1.6.5
 
 # Documentation
-sphinx
-sphinx-autobuild
-sphinx_rtd_theme
-sphinxcontrib-httpdomain
+sphinx==1.5.2
+sphinx-autobuild==0.6.0
+sphinx_rtd_theme==0.1.9
+sphinxcontrib-httpdomain==1.5.0
