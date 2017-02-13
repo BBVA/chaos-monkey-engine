@@ -20,4 +20,3 @@ class Attack1(Attack):
             Attack1.schema,
             Attack1.example
         )
-

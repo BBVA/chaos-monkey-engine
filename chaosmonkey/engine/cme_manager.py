@@ -215,7 +215,8 @@ class CMEManager:
         """
         self._sql_store.delete_plan(plan_id)
 
-    def _job_to_executor(self, job):
+    @staticmethod
+    def _job_to_executor(job):
         """
         Converts a apscheduler.job.Job to chaosmonkey.dal.executor.Executor
 

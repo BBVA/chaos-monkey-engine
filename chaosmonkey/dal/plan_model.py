@@ -25,6 +25,7 @@ class Plan(db.Model):
 
     jobs = relationship(Executor, cascade='all, delete, delete-orphan')
 
+    # pylint: disable=too-many-arguments
     def __init__(self, _id=None, name=None, created=None, next_execution=None, executors_count=0, executed=False):
         self.id = _id or uuid4().hex
         self.name = name

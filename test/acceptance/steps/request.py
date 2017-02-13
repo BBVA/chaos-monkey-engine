@@ -1,5 +1,5 @@
 from flask import json
-from behave import when, then, given
+from behave import when, then
 
 
 def request_with_payload(context, method, endpoint, payload):
@@ -77,6 +77,4 @@ def step_impl(context, response_code):
 def step_impl(context, response):
     json_response = json.loads(context.last_response.get_data())
     response = json.loads(response)
-    print(json_response)
-    print(response)
     assert json_response == response

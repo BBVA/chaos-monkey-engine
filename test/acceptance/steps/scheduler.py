@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from behave import when, then, given
+from behave import when
 from apscheduler.triggers.date import DateTrigger
 from time import sleep
 from chaosmonkey.dal.database import db
@@ -23,13 +23,9 @@ def wait_for_job_executed(context, job_id):
 
     while True:
         executor = context.manager.get_executor(job_id)
-
-        print(executor)
-        print(executor.executed)
         if executor.executed:
             break
         else:
             db.session.expire(executor)
 
         sleep(0.5)
-

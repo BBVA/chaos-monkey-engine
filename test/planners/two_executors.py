@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from chaosmonkey.planners import Planner
+from chaosmonkey.planners.planner import Planner
 
 
 class TwoExecutors(Planner):
@@ -21,4 +21,3 @@ class TwoExecutors(Planner):
     @staticmethod
     def to_dict():
         return Planner._to_dict(TwoExecutors.ref, TwoExecutors.schema, TwoExecutors.example)
-

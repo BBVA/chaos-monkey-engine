@@ -11,7 +11,7 @@ from chaosmonkey.engine.scheduler import scheduler
 from chaosmonkey.attacks.attack import Attack
 from chaosmonkey.dal.cme_sqlalchemy_store import CMESQLAlchemyStore
 from chaosmonkey.dal.database import db
-from chaosmonkey.modules import ModulesStore
+from chaosmonkey.modules.module_store import ModulesStore
 from chaosmonkey.planners.planner import Planner
 
 
@@ -66,11 +66,12 @@ def configure_engine(database_uri, attacks_folder, planners_folder, cme_timezone
     # configure CMEManager
     manager.configure(scheduler, sql_store, planners_store, attacks_store)
 
-    # Start the scheduler in the first request
-    @flask_app.before_first_request
-    def start_scheduler():
-        if not scheduler.running:
-            scheduler.start()
+
+# Start the scheduler in the first request
+@flask_app.before_first_request
+def start_scheduler():
+    if not scheduler.running:
+        scheduler.start()
 
 
 def shutdown_engine():

@@ -1,5 +1,5 @@
 from test.planners import planner1, planner2, two_executors, required_schema
-from behave import when, then, given
+from behave import given
 
 
 @given(u"there are {n_planners} planners available")

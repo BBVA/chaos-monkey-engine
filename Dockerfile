@@ -1,6 +1,9 @@
 FROM python:3.5
+MAINTAINER BBVALabs
+
 RUN mkdir -p /opt/chaosmonkey
 RUN pyvenv /opt/chaosmonkey/venv
+
 ENV REFRESHED_AT 2016-02-08T13:00
 COPY requirements.txt /opt/chaosmonkey/
 RUN /opt/chaosmonkey/venv/bin/pip install -r /opt/chaosmonkey/requirements.txt

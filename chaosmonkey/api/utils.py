@@ -10,7 +10,7 @@ def get_boolean(value):
     :param value:
     :return: boolean
     """
-    if type(value) == bool:
+    if isinstance(value, bool):
         return value
 
     if not value:

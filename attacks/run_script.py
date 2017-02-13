@@ -4,7 +4,7 @@ import paramiko
 import io
 import random
 from chaosmonkey.attacks.attack import Attack
-from chaosmonkey.drivers import EC2DriverFactory
+from chaosmonkey.drivers.ec2_driver import EC2DriverFactory
 
 
 class RunScript(Attack):

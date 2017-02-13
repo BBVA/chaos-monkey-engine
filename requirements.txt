@@ -12,17 +12,3 @@ gevent==1.2.1
 SQLAlchemy==1.1.5
 jsonschema==2.6.0
 git+git://github.com/BBVA/Flask-HAL.git#egg=flask-hal==1.0.4
-
-# Testing, auditing and linting requirements
-pytest==3.0.6
-pytest-flask==0.10.0
-pytest-cov==2.4.0
-behave==1.2.5
-bandit==1.4.0
-pylint==1.6.5
-
-# Documentation
-sphinx==1.5.2
-sphinx-autobuild==0.6.0
-sphinx_rtd_theme==0.1.9
-sphinxcontrib-httpdomain==1.5.0

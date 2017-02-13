@@ -1,7 +1,7 @@
 import logging
 import random
 from chaosmonkey.attacks.attack import Attack
-from chaosmonkey.drivers import EC2DriverFactory
+from chaosmonkey.drivers.ec2_driver import EC2DriverFactory
 
 
 class TerminateEC2Instance(Attack):
@@ -82,4 +82,3 @@ class TerminateEC2Instance(Attack):
             TerminateEC2Instance.schema,
             TerminateEC2Instance.example
         )
-

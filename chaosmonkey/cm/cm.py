@@ -8,7 +8,8 @@ from chaosmonkey.api.app import flask_app
 
 @click.command(name='chaos-monkey-engine')
 @click.option("--port", "-p", default=5000, help="Port used to expose the CM API. Default 5000")
-@click.option("--timezone", "-t", default="Europe/Madrid", help="Timezone to configure the scheduler. Default 'Europe/Madrid'")
+@click.option("--timezone", "-t", default="Europe/Madrid", help="Timezone to configure the scheduler. "
+                                                                "Default 'Europe/Madrid'")
 @click.option("--database-uri", "-d", required=True, help="SQLAlchemy database uri")
 @click.option("--attacks-folder", "-a", required=True, help="Path to the folder where the attacks are stored")
 @click.option("--planners-folder", "-p", required=True, help="Path to the folder where the planners are stored")

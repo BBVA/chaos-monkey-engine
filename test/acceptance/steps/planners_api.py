@@ -1,5 +1,5 @@
 from flask import url_for, json
-from behave import when, then, given
+from behave import when, then
 
 
 @when('the user makes a request to the get planners endpoint')
@@ -15,5 +15,3 @@ def the_api_responsds_with_n_attacks(context, n_planners):
     json_response = json.loads(context.last_response.get_data())
     assert "planners" in json_response
     assert int(n_planners) == len(json_response.get("planners"))
-
-

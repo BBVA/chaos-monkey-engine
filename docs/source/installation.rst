@@ -17,6 +17,13 @@ Then, you can run the container as the ``chaos-monkey-engine`` command. E.g::
 Python package
 **************
 
+You can install the latest package from `PyPi <https://pypi.python.org/pypi>`_::
+
+    pip install chaosmonkey
+
+
+Or you can install the package locally from source code.
+
 Create a Python 3 `virtualenv <https://docs.python.org/3/library/venv.html>`_ before installing the package.
 
 Install requirements::

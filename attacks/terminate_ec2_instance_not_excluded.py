@@ -1,7 +1,7 @@
 import logging
 import random
 from chaosmonkey.attacks.attack import Attack
-from chaosmonkey.drivers import EC2DriverFactory
+from chaosmonkey.drivers.ec2_driver import EC2DriverFactory
 
 
 class TerminateEC2InstanceNotExcluded(Attack):
@@ -44,7 +44,7 @@ class TerminateEC2InstanceNotExcluded(Attack):
             }
         }
     }
-    
+
     example = {
         "ref": ref,
         "args": {
@@ -69,7 +69,7 @@ class TerminateEC2InstanceNotExcluded(Attack):
     def run(self):
         nodes = self._get_nodes(self.attack_config.get("filters"), self.attack_config.get("excluded"))
 
-        if len(nodes) <1:
+        if len(nodes) < 1:
             self.log.info("Unable to locate nodes to attack!! Tag excluded: %s ", self.attack_config.get("excluded"))
             return
 
@@ -90,7 +90,7 @@ class TerminateEC2InstanceNotExcluded(Attack):
         self.log.info("Get nodes with filter: %r ", filters)
 
         nodes = self.driver.list_nodes(ex_filters=filters)
- 
+
         for node in nodes:
             tags = self.driver.ex_describe_tags(node)
 
@@ -106,4 +106,3 @@ class TerminateEC2InstanceNotExcluded(Attack):
             TerminateEC2InstanceNotExcluded.schema,
             TerminateEC2InstanceNotExcluded.example
         )
-

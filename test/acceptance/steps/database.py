@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from behave import when, then, given
+from behave import then, given
 from chaosmonkey.dal.database import db
 
 
@@ -40,7 +40,7 @@ def step_impl(context, n_executors):
     run_date = datetime.now() + timedelta(hours=10)
     context.executors_to_run = []
     for i in range(0, int(n_executors)):
-        executor_conf = {"ref":"test.attacks.attack1:Attack1","args":{}}
+        executor_conf = {"ref": "test.attacks.attack1:Attack1", "args": {}}
         executor = context.manager.add_executor(run_date, "exec name %s" % i, executor_conf, context.last_plan.id)
         context.executors_to_run.append(executor)
 
@@ -71,13 +71,11 @@ def step_impl(context):
 def step_impl(context):
     """Check that context.last_executor_id is executed"""
     executor = context.manager.get_executor(context.last_executor_id)
-    assert executor.executed == True
+    assert executor.executed is True
 
 
 @then(u'the plan is marked as executed in the database')
 def step_impl(context):
     """Check that context.last_plan.id is executed"""
     plan = context.manager.get_plan(context.last_plan.id)
-    assert plan.executed == True
-
-
+    assert plan.executed is True

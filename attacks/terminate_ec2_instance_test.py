@@ -57,7 +57,8 @@ def test_get_nodes_should_add_addition_filter():
 
         filters["instance-state-name"] = "running"
 
-        EC2DriverFactory_mock.return_value.get_driver.return_value.list_nodes.assert_called_once_with(ex_filters=filters)
+        EC2DriverFactory_mock.return_value.get_driver.return_value\
+            .list_nodes.assert_called_once_with(ex_filters=filters)
 
 
 def test_attack_example_validates():

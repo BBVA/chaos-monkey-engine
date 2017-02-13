@@ -1,4 +1,4 @@
-from chaosmonkey.planners import Planner
+from chaosmonkey.planners.planner import Planner
 
 
 class RequiredSchema(Planner):
@@ -25,4 +25,3 @@ class RequiredSchema(Planner):
     @staticmethod
     def to_dict():
         return Planner._to_dict(RequiredSchema.ref, RequiredSchema.schema, RequiredSchema.example)
-

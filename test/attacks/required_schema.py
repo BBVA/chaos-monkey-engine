@@ -41,4 +41,3 @@ class RequiredSchema(Attack):
             RequiredSchema.schema,
             RequiredSchema.example
         )
-

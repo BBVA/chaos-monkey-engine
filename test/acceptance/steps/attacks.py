@@ -1,5 +1,5 @@
 from test.attacks import attack1, attack2, required_schema
-from behave import when, then, given
+from behave import given
 
 
 @given(u'there are {n_attacks} attacks available')
@@ -28,7 +28,3 @@ def step_there_are_n_attacks_available(context, module_name):
         module = required_schema
 
     context.manager.attacks_store.add(module)
-
-
-
-

@@ -1,12 +1,18 @@
 from unittest.mock import patch
 import sys
 import pytest
-from chaosmonkey.modules import ModulesStore
+from chaosmonkey.modules.module_store import ModulesStore
 from chaosmonkey.attacks.attack import Attack
 import chaosmonkey.attacks.attack as module_attack
 
+
 class AttackMock(Attack):
-    pass
+    @staticmethod
+    def to_dict():
+        pass
+
+    def run(self):
+        pass
 
 
 def test_load_raise_exception_for_invalid_path():
@@ -29,9 +35,9 @@ def test_load_path_with_valid_modules(validate_path_mock, get_module_names_mock)
     module_list = ["sys", "os"]
     get_module_names_mock.return_value = module_list
     validate_path_mock.return_value = True
-    modulesStore = ModulesStore(Attack)
-    modulesStore.load("/tmp")
-    assert len(modulesStore.modules) == len(module_list)
+    modules_store = ModulesStore(Attack)
+    modules_store.load("/tmp")
+    assert len(modules_store.modules) == len(module_list)
 
 
 def test_get_module_names():
@@ -48,9 +54,9 @@ def test_get_module_names():
 
 
 def test_ref_to_obj():
-    modulesStore = ModulesStore(Attack)
-    modulesStore.add(module_attack)
-    obj = modulesStore._ref_to_obj("chaosmonkey.attacks.attack:Attack")
+    modules_store = ModulesStore(Attack)
+    modules_store.add(module_attack)
+    obj = modules_store._ref_to_obj("chaosmonkey.attacks.attack:Attack")
     assert obj is Attack
 
 

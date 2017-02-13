@@ -1,9 +1,30 @@
 language: python
+
+services: docker
+
 python:
   - "3.5"
-install: 
-  - pip install .
-  - pip install -r requirements.txt
-cache: pip
-script: pytest -v .
 
+install: pip install tox
+
+script:
+  - tox
+
+after_success:
+  # Report coverage to codecov
+  - pip install codecov
+  - codecov
+
+deploy:
+
+    # Deploy latest and version to Dockerhub
+  - provider: script
+    script: deploy/docker.sh
+    on:
+      branch: master
+
+    # Deploy to PyPI
+  - provider: script
+    script: deploy/pypi.sh
+    on:
+      branch: master

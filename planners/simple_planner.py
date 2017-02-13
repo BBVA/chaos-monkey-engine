@@ -1,7 +1,7 @@
 import logging
 import random
 from datetime import datetime
-from chaosmonkey.planners import Planner
+from chaosmonkey.planners.planner import Planner
 
 
 class SimplePlanner(Planner):
@@ -19,7 +19,7 @@ class SimplePlanner(Planner):
             "args": {
                 "type": "object",
                 "properties": {
-                    "min_time" : {"type": "string"},
+                    "min_time": {"type": "string"},
                     "max_time": {"type": "string"},
                     "times": {"type": "number"},
                 }
@@ -75,7 +75,7 @@ class SimplePlanner(Planner):
         Splits a daterange in even buckets
         """
         previous = start
-        diff = (end - start ) / intv
+        diff = (end - start) / intv
         for i in range(1, intv):
             current = start + diff * i
             yield (previous, current)

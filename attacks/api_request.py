@@ -58,4 +58,3 @@ class ApiRequest(Attack):
             ApiRequest.schema,
             ApiRequest.example
         )
-

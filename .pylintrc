@@ -1,0 +1,12 @@
+[MESSAGES CONTROL]
+#C0103 invalid-name for constants
+#C0111 missing-docstring
+#C0301 line too long
+#R0903 to few public methods
+#R0401 cyclic import
+#R0801 dup code
+disable=C0103,C0111,C0301,R0903,R0401,R0801
+
+[TYPECHECK]
+# generated members for SQLAlchemy http://stackoverflow.com/questions/28193025/pylint-cant-find-sqlalchemy-query-member
+generated-members=commit,delete,query,add,Column,String,DateTime,LargeBinary,Integer,ForeignKey,Boolean

@@ -42,7 +42,7 @@ class CMESQLAlchemyStore(BaseJobStore):
     """
 
     def __init__(self, pickle_protocol=pickle.HIGHEST_PROTOCOL):
-        super(CMESQLAlchemyStore, self).__init__()
+        super(CMESQLAlchemyStore, self).__init__()  # pylint: disable=no-member
         self.pickle_protocol = pickle_protocol
         self.log = logging.getLogger(__name__)
 
@@ -124,8 +124,8 @@ class CMESQLAlchemyStore(BaseJobStore):
         job_state['jobstore'] = self
         job = Job.__new__(Job)
         job.__setstate__(job_state)
-        job._scheduler = self._scheduler
-        job._jobstore_alias = self._alias
+        job._scheduler = self._scheduler  # pylint: disable=protected-access
+        job._jobstore_alias = self._alias  # pylint: disable=protected-access
         return job
 
     def _get_jobs(self, *conditions):
@@ -140,7 +140,7 @@ class CMESQLAlchemyStore(BaseJobStore):
         for job in jobs:
             try:
                 job_list.append(self._reconstitute_job(job.job_state))
-            except:
+            except:  # pylint: disable=bare-except
                 self.log.exception('Unable to restore job "%s" -- removing it', job.id)
                 failed_job_ids.add(job.id)
 
@@ -168,6 +168,7 @@ class CMESQLAlchemyStore(BaseJobStore):
 
             self.log.debug('check if all executors in plan %s are executed', executor.plan_id)
             # get all executor for the same plan that are not executed
+            # pylint: disable=singleton-comparison
             executors_pending = Executor.query.\
                 filter(Executor.executed == False, Executor.plan_id == executor.plan_id).all()
             if len(executors_pending) == 0:

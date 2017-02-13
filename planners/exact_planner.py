@@ -1,6 +1,6 @@
 import logging
 import arrow
-from chaosmonkey.planners import Planner
+from chaosmonkey.planners.planner import Planner
 
 
 class ExactPlanner(Planner):
@@ -43,4 +43,3 @@ class ExactPlanner(Planner):
     @staticmethod
     def to_dict():
         return Planner._to_dict(ExactPlanner.ref, ExactPlanner.schema, ExactPlanner.example)
-
