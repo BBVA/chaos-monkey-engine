@@ -6,7 +6,7 @@ Chaos Monkey Engine main package
 import logging
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(name)s: %(message)s'
 )
 
