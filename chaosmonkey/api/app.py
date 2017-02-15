@@ -23,6 +23,7 @@ flask_app.register_blueprint(plans, url_prefix=prev1 + "/plans")
 flask_app.register_blueprint(attacks, url_prefix=prev1 + "/attacks")
 flask_app.register_blueprint(planners, url_prefix=prev1 + "/planners")
 
+
 # Register error handler for custom APIError exception
 @flask_app.errorhandler(APIError)
 def handle_invalid_usage(error):
