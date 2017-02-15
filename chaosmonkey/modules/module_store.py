@@ -36,9 +36,10 @@ class ModulesStore:
         module_names = self._get_module_names(path)
         try:
             for name in module_names:
-                self.log.debug('added module %s', name)
-                module = __import__(name)
-                self.modules.append(module)
+                if not name.endswith('_test'):
+                    self.log.debug('added module %s', name)
+                    module = __import__(name)
+                    self.modules.append(module)
         except ImportError:
             self.log.debug('error importing module %s', name)
             raise ValueError('Unable to import %s' % name)
