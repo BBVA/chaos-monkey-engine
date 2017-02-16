@@ -13,6 +13,10 @@ Chaos Monkey Engine
   :target: https://travis-ci.org/BBVA/chaos-monkey-engine
   :alt: Build Status
 
+.. image:: https://img.shields.io/pypi/v/chaosmonkey.svg
+  :target: https://pypi.python.org/pypi/chaosmonkey
+  :alt: PyPI package
+
 .. image:: https://img.shields.io/docker/automated/bbvalabs/chaos-monkey-engine.svg
   :target: https://hub.docker.com/r/bbvalabs/chaos-monkey-engine/
   :alt: Dockerhub Build
