@@ -9,6 +9,9 @@ with open(path.join(here, 'VERSION')) as f:
 with open(path.join(here, 'README.rst')) as f:
     long_description = f.read()
 
+with open(path.join(here, 'CHANGELOG.rst')) as f:
+    long_description = "\n".join((long_description, f.read()))
+
 setup(name='chaosmonkey',
       version=version,
       description='A Chaos Engineering swiss army knife',
