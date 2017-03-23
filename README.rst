@@ -55,4 +55,4 @@ Contributing to Chaos Monkey Engine
 You can contribute to Chaos Monkey Engine in a few different ways:
 
 - Submit issues through `issue tracker <https://github.com/BBVA/chaos-monkey-engine/issues>`_ on GitHub.
-- If you wish to make code changes, or contribute something new, please follow the `GitHub Forks / Pull requests model <https://help.github.com/articles/fork-a-repo/>`_): Fork the chaos-monkey-engine repo, make the change and propose it back by submitting a pull request.
+- If you wish to make code changes, or contribute something new, please follow the `GitHub Forks / Pull requests model <https://help.github.com/articles/fork-a-repo/>`_: fork the chaos-monkey-engine repo, make the change and propose it back by submitting a pull request.
