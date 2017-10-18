@@ -1,5 +1,5 @@
 from flask import request
-from flask_hal.document import BaseDocument, link
+from chaosmonkey.api.hal import BaseDocument, Link
 from chaosmonkey.dal.database import db
 
 
@@ -26,7 +26,7 @@ class Executor(db.Model):
 
     def to_dict(self):
         """
-        Return a :meth:`flask_hal.document` representation for the Executor
+        Return a :meth:`chaosmonkey.api.hal.document` representation for the Executor
 
         :return: :meth:`chaosmonkey.dal.executor_model.HalExecutor`
         """
@@ -44,11 +44,11 @@ class Executor(db.Model):
 
 class HalExecutor(BaseDocument):
     """
-    Class to represent an Executor as a :meth:`flask_hal.document`
+    Class to represent an Executor as a :meth:`chaosmonkey.api.hal.document`
     """
     def __init__(self, data=None, links=None, embedded=None):
         super(HalExecutor, self).__init__(data, links, embedded)
 
-        self.links.append(link.Link("self", request.path + data["id"]))
-        self.links.append(link.Link("update", request.path + data["id"]))
-        self.links.append(link.Link("delete", request.path + data["id"]))
+        self.links.append(Link("self", request.path + data["id"]))
+        self.links.append(Link("update", request.path + data["id"]))
+        self.links.append(Link("delete", request.path + data["id"]))

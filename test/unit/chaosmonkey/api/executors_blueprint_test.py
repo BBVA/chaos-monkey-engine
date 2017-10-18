@@ -4,7 +4,7 @@ API Tests
 import arrow
 from apscheduler.triggers.date import DateTrigger
 from flask import url_for
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 from datetime import datetime, timedelta
 
 from chaosmonkey.api.executors_blueprint import trigger_to_dict, dict_to_trigger

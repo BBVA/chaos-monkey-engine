@@ -2,7 +2,7 @@ from datetime import datetime
 from uuid import uuid4
 from sqlalchemy.orm import relationship
 from flask import request
-from flask_hal.document import BaseDocument, link
+from chaosmonkey.api.hal import BaseDocument, Link
 from chaosmonkey.dal.database import db
 from chaosmonkey.dal.executor_model import Executor
 
@@ -39,7 +39,7 @@ class Plan(db.Model):
 
     def to_dict(self):
         """
-        Returns a :meth:`flask_hal.document` representation for the Executor
+        Returns a :meth:`chaosmonkey.api.hal.document` representation for the Executor
 
         :return: :meth:`chaosmonkey.dal.plan_model.HalPlan`
         """
@@ -59,11 +59,11 @@ class Plan(db.Model):
 
 class HalPlan(BaseDocument):
     """
-    Class to represent a Plan as a :meth:`flask_hal.document`
+    Class to represent a Plan as a :meth:`chaosmonkey.api.hal.document`
     """
     def __init__(self, data=None, links=None, embedded=None):
         super(HalPlan, self).__init__(data, links, embedded)
 
-        self.links.append(link.Link("self", request.path + data["id"]))
-        self.links.append(link.Link("update", request.path + data["id"]))
-        self.links.append(link.Link("delete", request.path + data["id"]))
+        self.links.append(Link("self", request.path + data["id"]))
+        self.links.append(Link("update", request.path + data["id"]))
+        self.links.append(Link("delete", request.path + data["id"]))

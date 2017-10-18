@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from flask import url_for, json
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 import test.attacks.attack1 as attack1_module
 import test.planners.planner1 as planner1_module
 

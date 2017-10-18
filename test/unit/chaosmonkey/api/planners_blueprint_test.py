@@ -1,5 +1,5 @@
 from flask import url_for
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 import test.planners.planner1 as planner1_module
 import test.planners.planner2 as planner2_module
 

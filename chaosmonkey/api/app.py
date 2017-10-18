@@ -1,7 +1,7 @@
 import logging
 from flask_cors import CORS
 from flask import Flask, json
-from flask_hal import HAL, HALResponse
+from chaosmonkey.api.hal import HAL, HALResponse
 from chaosmonkey.api.attacks_blueprint import attacks
 from chaosmonkey.api.executors_blueprint import executors
 from chaosmonkey.api.planners_blueprint import planners
