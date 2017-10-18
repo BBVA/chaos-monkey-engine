@@ -32,8 +32,7 @@ setup(name='chaosmonkey',
             'flask_sqlalchemy==2.1',
             'gevent==1.2.1',
             'SQLAlchemy==1.1.5',
-            'jsonschema==2.6.0',
-            'flask-hal-bbva==1.0.5'
+            'jsonschema==2.6.0'
       ],
       entry_points='''
       [console_scripts]

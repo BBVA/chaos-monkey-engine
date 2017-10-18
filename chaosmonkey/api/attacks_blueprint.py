@@ -11,7 +11,7 @@ Each attack has three main properties represented in the API:
 
 """
 from flask import Blueprint
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 from chaosmonkey.engine.cme_manager import manager
 
 attacks = Blueprint("attacks", __name__)
@@ -78,7 +78,7 @@ def list_attacks():
             }
         }
 
-    :return: :meth:`flask_hal.document`
+    :return: :meth:`chaosmonkey.api.hal.document`
     """
     attack_list = manager.get_attack_list()
     return Document(data={"attacks": attack_list})

@@ -1,5 +1,5 @@
 from flask import url_for
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 import test.attacks.attack1 as attack1_module
 import test.attacks.attack2 as attack2_module
 

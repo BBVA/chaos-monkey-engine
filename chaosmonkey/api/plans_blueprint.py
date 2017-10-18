@@ -17,7 +17,7 @@ Plans has the following properties
 
 """
 from flask import Blueprint, json, request
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 from chaosmonkey.api.request_validator import validate_payload
 from chaosmonkey.engine.cme_manager import manager
 from chaosmonkey.api.utils import get_boolean
@@ -134,7 +134,7 @@ def list_plans():
 
     :param: all. Control when to show all plans (true) or only not executed (false). Defaults to false
 
-    :return: :meth:`flask_hal.document`
+    :return: :meth:`chaosmonkey.api.hal.document`
     """
     show_all_query = request.args.get("all", False)
     show_all = get_boolean(show_all_query)
@@ -202,7 +202,7 @@ def get_plan(plan_id):
             }
         }
 
-    :return: :meth:`flask_hal.document`
+    :return: :meth:`chaosmonkey.api.hal.document`
     """
     plan = manager.get_plan(plan_id)
     executor_list = [executor.to_dict() for executor in manager.get_executors_for_plan(plan_id)]

@@ -12,7 +12,7 @@ Planners has three main properties represented in the API:
 
 """
 from flask import Blueprint
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 from chaosmonkey.engine.cme_manager import manager
 
 planners = Blueprint("planners", __name__)
@@ -68,7 +68,7 @@ def list_planners():
             ]
         }
 
-    :return: :meth:`flask_hal.document`
+    :return: :meth:`chaosmonkey.api.hal.document`
     """
     planners_list = manager.get_planner_list()
     return Document(data={"planners": planners_list})

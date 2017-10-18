@@ -26,7 +26,7 @@ import arrow
 from apscheduler.jobstores.base import JobLookupError
 from apscheduler.triggers.date import DateTrigger
 from flask import Blueprint, json, request
-from flask_hal import Document
+from chaosmonkey.api.hal import Document
 
 from chaosmonkey.api.api_errors import APIError
 from chaosmonkey.api.request_validator import validate_payload
@@ -82,7 +82,7 @@ def get_executors():
 
     :param: executed. Control when to show all executors (true) or only not executed (false). Defaults to false
 
-    :return: :meth:`flask_hal.document`
+    :return: :meth:`chaosmonkey.api.hal.document`
     """
     executed_query = request.args.get("executed", False)
     executed = get_boolean(executed_query)
@@ -132,7 +132,7 @@ def put_executor(executor_id):
           }
         }
 
-    :return: :meth:`flask_hal.document`
+    :return: :meth:`chaosmonkey.api.hal.document`
     """
     assert validate_payload(request, executor_trigger_schema)
     body = request.get_json()
