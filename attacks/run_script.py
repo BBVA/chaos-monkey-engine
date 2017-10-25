@@ -112,15 +112,13 @@ class RunScript(Attack):
 
         pem_decoded = base64.b64decode(pem).decode()
 
-        temp=tempfile.NamedTemporaryFile('w', delete=False)
+        temp = tempfile.NamedTemporaryFile('w', delete=False)
         temp.write(pem_decoded)
         temp.flush()
         temp.close()
 
         self.log.info("connect ssh client to %s with user %s", host, user)
         self.log.info("Executing remote script")
-        # status = os.system("cat {} | ssh -oStrictHostKeyChecking -i {} {}@{}".format(local_script,temp.name, user,host))
-        #self.log.info("os.System status = %s",status)
 
     @staticmethod
     def to_dict():

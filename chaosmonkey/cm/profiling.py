@@ -8,6 +8,7 @@ import cProfile
 
 PROFILER_FILE_PATH = '/tmp/profile.prof'
 
+
 @contextmanager
 def profile_ctx(profiling):
     """

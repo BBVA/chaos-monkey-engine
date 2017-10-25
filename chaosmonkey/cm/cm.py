@@ -8,6 +8,7 @@ from chaosmonkey.engine.app import configure_engine, shutdown_engine
 from chaosmonkey.api.app import flask_app
 from .profiling import PROFILER_FILE_PATH, profile_ctx
 
+
 @click.command(name='chaos-monkey-engine')
 @click.option("--port", "-p", default=5000, help="Port used to expose the CM API. Default 5000")
 @click.option("--timezone", "-t", default="Europe/Madrid", help="Timezone to configure the scheduler. "
