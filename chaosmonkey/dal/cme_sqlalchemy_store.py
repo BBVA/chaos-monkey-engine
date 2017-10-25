@@ -140,7 +140,7 @@ class CMESQLAlchemyStore(BaseJobStore):
         for job in jobs:
             try:
                 job_list.append(self._reconstitute_job(job.job_state))
-            except:  # pylint: disable=bare-except
+            except Exception:  # pylint: disable=bare-except
                 self.log.exception('Unable to restore job "%s" -- removing it', job.id)
                 failed_job_ids.add(job.id)
 

@@ -1,6 +1,7 @@
 import logging
 import base64
-import paramiko
+import os
+import tempfile
 import io
 import random
 from chaosmonkey.attacks.attack import Attack
@@ -72,9 +73,6 @@ class RunScript(Attack):
         region = self.attack_config.get("region", None)
         self.driver = EC2DriverFactory(region=region).get_driver()
 
-        self.ssh_client = paramiko.SSHClient()
-        self.ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
     def run(self):
         """
         Run a script through ssh on a random instance from the collection if instances
@@ -90,8 +88,7 @@ class RunScript(Attack):
 
         local_script = self.attack_config.get("local_script")
         remote_script = self.attack_config.get("remote_script")
-
-        self._run_script(node.private_ips[0], user, local_script, remote_script, pem)
+        self._run_script(node.public_ips[0], user, local_script, remote_script, pem)
 
     def _get_nodes(self, filters):
         """
@@ -114,39 +111,14 @@ class RunScript(Attack):
         self.log.info("running %s in node %s", local_script, host)
 
         pem_decoded = base64.b64decode(pem).decode()
-        pkey = paramiko.RSAKey.from_private_key(file_obj=io.StringIO(pem_decoded))
 
-        try:
-            # get attack script paths
+        temp = tempfile.NamedTemporaryFile('w', delete=False)
+        temp.write(pem_decoded)
+        temp.flush()
+        temp.close()
 
-            self.log.info("connect ssh client to %s with user %s", host, user)
-            self.ssh_client.connect(host, username=user, pkey=pkey)
-            self._ssh_upload_script(local_script, remote_script)
-            self.log.info("Executing remote script")
-            # avoid file descriptors open while executing the script
-            # http://unix.stackexchange.com/questions/30400/execute-remote-commands-completely-detaching-from-the-ssh-connection
-            self.log.info("Execute command %s", remote_script)
-            stdin, stdout, stderr = self.ssh_client.exec_command(remote_script, get_pty=True)
-            self.log.info("script executed\nstdout: %s", stdout.readlines())
-            self.log.info("script executed\nstderr: %s", stderr.readlines())
-        except Exception as e:
-            self.log.info(e)
-        finally:
-            self.ssh_client.close()
-
-    def _ssh_upload_script(self, local_script, remote_script):
-        """
-        Uploads a local file to the host to the remote file
-        """
-        self.log.info("remove previous script")
-        self.ssh_client.exec_command("rm " + remote_script)
-        trans = self.ssh_client.get_transport()
-        sftp = paramiko.SFTPClient.from_transport(trans)
-        self.log.info("put from %s to %s", local_script, remote_script)
-        sftp.put(local_script, remote_script)
-        self.log.info("make remote script +x")
-        self.ssh_client.exec_command("chmod u+x " + remote_script)
-        sftp.close()
+        self.log.info("connect ssh client to %s with user %s", host, user)
+        self.log.info("Executing remote script")
 
     @staticmethod
     def to_dict():
